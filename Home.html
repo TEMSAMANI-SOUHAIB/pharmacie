@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Accueil - Application Pharmacie</title>
+    <style>
+        /* ----- RESET & BODY ----- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #c1f3c7, #c7e3f3);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        /* ----- CONTENEUR PRINCIPAL ----- */
+        #accueil-container {
+            width: 80%;
+            max-width: 900px;
+            background: #ffffffbb; /* blanc semi-transp */
+            border: 2px solid #7cc17d;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        /* ----- LOGO PHARMACIE ----- */
+        #logo-pharma {
+            width: 120px;
+            height: auto;
+            margin-right: 20px;
+        }
+
+        /* ----- ZONE SLIDESHOW ----- */
+        #slideshow {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            opacity: 0;
+            transition: opacity 0.5s;
+            padding: 10px;
+        }
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide h2 {
+            color: #2c7f2f;
+            margin-bottom: 10px;
+        }
+        .slide p {
+            font-size: 1.05rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        /* ----- NAVIGATION (FLÈCHES) ----- */
+        .nav-arrows {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+
+            /* Par défaut, on les cache (opacité=0, clics inactifs) */
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        /* Quand on survole la zone du diaporama,
+           on affiche les flèches. */
+        #slideshow:hover .nav-arrows {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .arrow-btn {
+            background: #388fff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            transition: background 0.3s, transform 0.2s;
+            margin: 0 20px; /* Espace pour ne pas coller au texte */
+        }
+        .arrow-btn:hover {
+            background: #2b66bf;
+            transform: scale(1.1);
+        }
+
+        /* ----- BOUTON VERS index.html ----- */
+        #goAppBtn {
+            display: block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #388fff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+            transition: background 0.3s;
+        }
+        #goAppBtn:hover {
+            background: #2b66bf;
+        }
+    </style>
+</head>
+<body>
+
+<div id="accueil-container">
+    <!-- Logo Pharmacie -->
+    <img
+            id="logo-pharma"
+            src="pharmacy.png"
+            alt="Logo Pharmacie">
+
+    <!-- Slideshow -->
+    <div id="slideshow">
+
+        <!-- SLIDE 1 -->
+        <div class="slide active">
+            <h2>Bienvenue sur notre Application</h2>
+            <p>
+                Cette application vous permet de localiser facilement les pharmacies
+                autour de vous, consulter leurs horaires, et calculer l'itinéraire
+                pour vous y rendre rapidement.
+            </p>
+            <p>
+                Naviguez avec les flèches pour découvrir nos fonctionnalités,
+                l'importance et la spécificité de cet outil.
+            </p>
+            <!-- Bouton pour aller à l'Application (index.html) -->
+            <button id="goAppBtn" onclick="location.href='index.html'">
+                Aller à l'Application
+            </button>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide">
+            <h2>Fonctionnalités Clés</h2>
+            <p>
+                - Localisation des pharmacies proches en temps réel<br>
+                - Liste détaillée avec statut ouvert/fermé<br>
+                - Itinéraire (voiture, marche, transports)
+            </p>
+            <p>
+                Tout est fait pour vous faire gagner du temps et vous informer
+                de manière fiable.
+            </p>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide">
+            <h2>Importance</h2>
+            <p>
+                Trouver une pharmacie ouverte, surtout en urgence, est un
+                besoin fondamental. Cette solution répond à cette exigence.
+            </p>
+            <p>
+                Les professionnels peuvent analyser la répartition
+                des pharmacies pour optimiser les services.
+            </p>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide">
+            <h2>Spécificités</h2>
+            <p>
+                Nous utilisons l’API Google Maps pour un rendu précis,
+                l’API Places pour collecter les données en direct.
+            </p>
+
+        </div>
+
+        <!-- FLÈCHES DE NAVIGATION (n'apparaissent qu'au survol) -->
+        <div class="nav-arrows">
+            <button class="arrow-btn" id="arrowLeft">&lt;</button>
+            <button class="arrow-btn" id="arrowRight">&gt;</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+
+    const arrowLeft = document.getElementById("arrowLeft");
+    const arrowRight = document.getElementById("arrowRight");
+
+    function showSlide(index) {
+        if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else if (index >= slides.length) {
+            currentSlide = 0;
+        } else {
+            currentSlide = index;
+        }
+
+        slides.forEach((slide, i) => {
+            slide.classList.remove("active");
+            if (i === currentSlide) {
+                slide.classList.add("active");
+            }
+        });
+    }
+
+    arrowLeft.addEventListener("click", () => {
+        showSlide(currentSlide - 1);
+    });
+    arrowRight.addEventListener("click", () => {
+        showSlide(currentSlide + 1);
+    });
+</script>
+</body>
+</html>

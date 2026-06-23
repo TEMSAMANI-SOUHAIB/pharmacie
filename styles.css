@@ -1,0 +1,178 @@
+
+
+/* Fond vert clair */
+html, body {
+    margin: 0;
+    padding: 0;
+    background: #dfffe2;
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Barre du haut */
+#topbar {
+    background: #79c781;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#topbar h1 {
+    margin: 5px;
+    font-size: 1.3em;
+    text-align: center;
+}
+
+#topbar-btns {
+    margin: 5px;
+}
+
+/* Boutons bleus */
+.blue-btn {
+    background: #388fff;
+    color: #fff;
+    border: none;
+    padding: 7px 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 5px;
+}
+.blue-btn:hover {
+    background: #2b66bf;
+}
+
+/* Conteneur principal (dégradé de verts) */
+#main-container {
+    width: 100%;
+    min-height: calc(100vh - 80px);
+    background: linear-gradient(#dfffe2, #c2f2c4);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Rideaux (carte + liste) */
+#map-curtain,
+#list-curtain {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.5s ease;
+    border: 1px solid #9be09e;
+    border-radius: 5px;
+    background: #f0fff3;
+    margin-bottom: 10px;
+}
+
+/* Carte occupant tout l’espace du rideau */
+#map {
+    width: 100%;
+    height: 500px;
+}
+
+/* Liste pharmacies :
+   => on autorise le scroll si trop longue
+*/
+#pharmacy-list {
+    width: 100%;
+    /* On laisse "height: auto" interne
+       On scrolle dans le rideau si besoin */
+    max-height: 600px; /* si vous voulez limiter la hauteur visible */
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Items liste */
+.pharmacy-item {
+    background: #ffffffd1;
+    border: 1px solid #ace8ab;
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+/* Zone d’infos itinéraire */
+#routeInfo {
+    border: 1px solid #9be09e;
+    border-radius: 5px;
+    background: #f0fff3;
+    min-height: 80px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+/* ------ Style des étapes horizontales ------ */
+
+/* On y place un résumé + une liste horizontale */
+.summary {
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.summary p {
+    margin: 4px 0;
+    font-weight: normal;
+}
+
+/* liste horizontale */
+.steps-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    overflow-x: auto;
+    text-align: left;
+}
+
+/* step = carte horizontale */
+.step {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    min-width: 180px;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    background: #fff;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.step-title {
+    font-weight: bold;
+    font-size: 1.0em;
+    margin-bottom: 4px;
+}
+
+.step-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+}
+
+.step-content {
+    margin-top: 5px;
+}
+
+
+.step.walking {
+    border-left: 5px solid #2ecc71;
+}
+.step.transit {
+    border-left: 5px solid #3498db;
+}
+.step.other {
+    border-left: 5px solid #9b59b6;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pharmacies </title>
+
+    <!-- Feuille de style -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- API Google Maps (Places + callback) -->
+    <script
+            src="https://maps.googleapis.com/maps/api/js?key="
+            async
+            defer>
+    </script>
+</head>
+<body>
+<!-- Barre de navigation (entête) -->
+<header id="topbar">
+    <h1> Pharmacies </h1>
+    <div id="topbar-btns">
+        <button class="blue-btn" onclick="toggleMap()">Afficher la Carte</button>
+        <button class="blue-btn" onclick="toggleList()">Afficher la Liste</button>
+
+        <label for="travelModeSelect" style="margin-left:10px;">Mode :</label>
+        <select id="travelModeSelect">
+            <option value="DRIVING">Voiture</option>
+            <option value="WALKING">Marche</option>
+            <option value="BICYCLING">Vélo</option>
+            <option value="TRANSIT">Transports</option>
+        </select>
+
+        <button class="blue-btn" onclick="clearRoute()">Effacer Itinéraire</button>
+    </div>
+</header>
+
+<!-- Conteneur principal (fond vert) -->
+<div id="main-container">
+    <!-- Rideau Carte -->
+    <div id="map-curtain">
+        <div id="map"></div>
+    </div>
+
+    <div id="routeInfo"></div>
+
+    <!-- Rideau Liste -->
+    <div id="list-curtain">
+        <div id="pharmacy-list"></div>
+    </div>
+
+    <!-- Zone d’infos itinéraire (étapes horizontales) -->
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
