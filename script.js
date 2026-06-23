@@ -287,7 +287,7 @@ function showRouteDetails(directionResult) {
         else if (travelMode === "TRANSIT") stepTitle = "Transports";
 
         // Détails
-        let stepContent = "";
+        let stepContent;
         if (travelMode === "TRANSIT" && step.transit) {
             const tr = step.transit;
             const vehicleType = tr.line?.vehicle?.type || "Transport";
